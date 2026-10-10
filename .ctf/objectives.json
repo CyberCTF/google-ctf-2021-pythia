@@ -1,0 +1,71 @@
+{
+  "objectives": [
+    {
+      "key": "main",
+      "title": "Unlock the flag",
+      "prompt": "Recover the three passwords with the decryption oracle and read the flag.",
+      "check": {
+        "evidence": "SECRET",
+        "format": "CTF{%s}"
+      },
+      "dev": "CTF{dev-google-ctf-2021-pythia}",
+      "hints": [
+        "Each query tests a single key, unless one ciphertext can be valid under many keys at once.",
+        "Look up partitioning oracle attacks on non-committing AEAD."
+      ],
+      "steps": [
+        {
+          "key": "mode",
+          "title": "Identify the mode",
+          "prompt": "Which authenticated encryption mode protects the ciphertexts?",
+          "check": {
+            "answer": [
+              "aes-gcm",
+              "gcm",
+              "aes gcm",
+              "galois/counter mode",
+              "galois counter mode"
+            ]
+          }
+        },
+        {
+          "key": "length",
+          "title": "Size the key space",
+          "prompt": "How many letters long is each password?",
+          "check": {
+            "answer_regex": "^(3|three)$"
+          }
+        },
+        {
+          "key": "property",
+          "title": "Find the missing property",
+          "prompt": "Which property does the mode lack, so that one ciphertext can decrypt validly under several keys?",
+          "check": {
+            "answer": [
+              "key commitment",
+              "key-commitment",
+              "commitment",
+              "committing",
+              "key committing",
+              "robustness"
+            ]
+          }
+        },
+        {
+          "key": "attack",
+          "title": "Name the attack",
+          "prompt": "What is the attack that splits the key space with each crafted query called?",
+          "check": {
+            "answer": [
+              "partitioning oracle",
+              "partitioning oracle attack",
+              "partitioning oracles",
+              "multi-key collision",
+              "key partitioning"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
