@@ -1,8 +1,11 @@
 {
+  "project_name": "cyberlabs-google-ctf-2021-pythia",
+  "slug": "google-ctf-2021-pythia",
   "title": "Google CTF 2021: pythia",
   "description": "A decryption oracle with AES-GCM keys derived from short passwords; queries are slow and limited. Recover the keys to read the flag.",
-  "question": "Recover the passwords behind the decryption oracle and read the flag.",
-  "category": "CRYPTO",
+  "category": "crypto",
   "difficulty": 3,
-  "evidence_kind": "SECRET"
+  "evidence_kind": "SECRET",
+  "capabilities": [],
+  "question": "Recover the passwords behind the decryption oracle and read the flag."
 }
